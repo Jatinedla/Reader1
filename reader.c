@@ -4,13 +4,11 @@
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER; // Controls access to rc (reader count)
 pthread_mutex_t db = PTHREAD_MUTEX_INITIALIZER; // Controls access to the database
-int rc = 0; // Number of threads reading
+int rc = 0; 
 
-// Function to simulate the reader's behavior
 void* reader(void* arg) {
     int i = *((int*)arg);
 
-    // Debug print to check if reader thread starts
     printf("Reader %d is trying to enter the critical section\n", i);
 
     pthread_mutex_lock(&mutex); // Lock to modify rc
