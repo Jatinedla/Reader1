@@ -37,14 +37,14 @@ void* reader(void* arg) {
     return NULL;
 }
 
-// Function to simulate the writer's behavior
+
 void* writer(void* arg) {
     printf("Writer tries to enter the critical section\n");
 
     pthread_mutex_lock(&db); // Writer locks the database
     printf("Writer is in critical region\n");
 
-    // Simulating writing
+    
     usleep(2000); // Simulate time spent writing
 
     pthread_mutex_unlock(&db); // Writer releases the database lock
@@ -69,13 +69,13 @@ int main() {
         }
     }
 
-    // Join all threads
+   
     for (int i = 0; i < 10; i++) {
         pthread_join(threads[i], NULL);
         printf("Thread %d joined\n", i + 1); // Debug print
     }
 
-    // Destroy mutexes to avoid any resource leaks
+  
     pthread_mutex_destroy(&mutex);
     pthread_mutex_destroy(&db);
 
